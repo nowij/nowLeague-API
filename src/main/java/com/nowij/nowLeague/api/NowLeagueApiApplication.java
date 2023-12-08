@@ -1,0 +1,13 @@
+package com.nowij.nowLeague.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class NowLeagueApiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(NowLeagueApiApplication.class, args);
+	}
+
+}
