@@ -13,12 +13,13 @@ public class Season {
     @Id
     @Column
     private String seasonCode;
+    @Id
+    @Column
+    private String gameRound;
     @Column
     private String seasonName;
     @Column
     private Date startDate;
     @Column
     private Date endDate;
-    @Column
-    private String gameRound;
 }
