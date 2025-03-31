@@ -1,7 +1,9 @@
-package com.nowij.nowLeague.api.current.model;
+package com.nowij.nowLeague.api.common.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
 
@@ -9,6 +11,8 @@ import java.sql.Date;
 @Entity
 @Table(name = "game_result")
 @NoArgsConstructor
+@Getter
+@Setter
 public class GameResult {
 
     @Id
@@ -17,10 +21,6 @@ public class GameResult {
     private int gameNo;
     @Column
     private Date gameDate;
-//    @Column
-//    private String gameRound;
-//    @Column
-//    private String seasonCode;
     @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "game_round"),
@@ -28,29 +28,29 @@ public class GameResult {
     })
     private Season season;
 
-    @Column
+    @Column(name = "home_code")
     private String homeCode;
-    @Column
+    @Column(name = "home_1_spoint")
     private int home1Spoint;
-    @Column
+    @Column(name = "home_2_spoint")
     private int home2Spoint;
-    @Column
+    @Column(name = "home_3_spoint")
     private int home3Spoint;
-    @Column
+    @Column(name = "home_4_spoint")
     private int home4Spoint;
-    @Column
+    @Column(name = "home_5_spoint")
     private int home5Spoint;
-    @Column
+    @Column(name = "away_code")
     private String awayCode;
-    @Column
+    @Column(name = "away_1_spoint")
     private int away1Spoint;
-    @Column
+    @Column(name = "away_2_spoint")
     private int away2Spoint;
-    @Column
+    @Column(name = "away_3_spoint")
     private int away3Spoint;
-    @Column
+    @Column(name = "away_4_spoint")
     private int away4Spoint;
-    @Column
+    @Column(name = "away_5_spoint")
     private int away5Spoint;
 
 }

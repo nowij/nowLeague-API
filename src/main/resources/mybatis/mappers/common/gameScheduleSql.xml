@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nowij.nowLeague.api.common.repository.GameScheduleRepository">
+    <select id="selectGameSchedule" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+        SELECT GAME_NO,
+               AWAY_CODE,
+               AWAY_SPOINT,
+               GAME_DATE,
+               HOME_CODE,
+               HOME_SPOINT,
+               GAME_ROUND,
+               SEASON_CODE
+        FROM game_schedule
+        WHERE SEASON_CODE = #{seasonCode}
+        <if test='gameRound != null and gameRound != ""'>
+          AND GAME_ROUND = #{gameRound}
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nowij.nowLeague.api.past.repository.PastRepository">
+    <select id="selectPastWinpointByRound" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+        SELECT A.*, B.TEAM_NAME
+        FROM (
+                 SELECT RANK() OVER(ORDER BY WIN_POINT DESC) AS RANKING, TEAM_CODE, WIN_POINT
+                 FROM team_score
+                 WHERE SEASON_CODE = #{seasonCode}
+                   AND GAME_ROUND = #{gameRound}
+             ) A, team B
+        WHERE A.TEAM_CODE = B.TEAM_CODE
+    </select>
+</mapper>

@@ -1,4 +1,4 @@
-package com.nowij.nowLeague.api.current.model;
+package com.nowij.nowLeague.api.common.model;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -13,17 +13,13 @@ public class GameSchedule {
     @Id
     @Column
     private int gameNo;
-
     @Column
     private Date gameDate;
-//    @Column
-//    private String gameRound;
-//    @Column
-//    private String seasonCode;
+
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "season_code"),
-            @JoinColumn(name = "game_round")
+            @JoinColumn(name = "season_code", referencedColumnName = "season_code"),
+            @JoinColumn(name = "game_round", referencedColumnName = "game_round")
     })
     private Season season;
 

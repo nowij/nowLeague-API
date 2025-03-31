@@ -1,4 +1,4 @@
-package com.nowij.nowLeague.api.current.model;
+package com.nowij.nowLeague.api.common.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
