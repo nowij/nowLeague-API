@@ -1,7 +1,7 @@
 package com.nowij.nowLeague.api.common.controller;
 
-import com.nowij.nowLeague.api.common.model.GameResult;
-import com.nowij.nowLeague.api.common.model.GameSchedule;
+import com.nowij.nowLeague.api.common.model.GameResultEntity;
+import com.nowij.nowLeague.api.common.model.GameScheduleEntity;
 import com.nowij.nowLeague.api.common.service.GameService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +22,12 @@ public class GameController {
     }
 
     @GetMapping("/schedule")
-    public List<GameSchedule> selectGameSchedule(@RequestParam String season, @RequestParam String round) {
+    public List<GameScheduleEntity> selectGameSchedule(@RequestParam String season, @RequestParam String round) {
         return gameService.selectGameSchedule(season, round);
     }
 
     @GetMapping("/result")
-    public ResponseEntity<GameResult> selectGameResult(@RequestParam int no) {
+    public ResponseEntity<GameResultEntity> selectGameResult(@RequestParam int no) {
         return gameService.selectGameResult(no);
     }
 }

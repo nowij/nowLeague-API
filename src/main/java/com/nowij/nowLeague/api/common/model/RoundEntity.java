@@ -4,15 +4,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "team")
-public class Team {
+@Table(name = "round")
+@Getter
+@Setter
+public class RoundEntity {
     @Id
     @Column
-    private String teamCode;
-    @Column
-    private String teamName;
-    @Column
+    private String code;
+    @Column(name = "kor_name")
+    private String korName;
+    @Column(name = "use_yn")
     private String useYn;
 }

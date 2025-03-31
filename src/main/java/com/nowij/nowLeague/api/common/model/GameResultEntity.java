@@ -13,7 +13,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class GameResult {
+public class GameResultEntity {
 
     @Id
     @Column
@@ -26,7 +26,7 @@ public class GameResult {
             @JoinColumn(name = "game_round"),
             @JoinColumn(name = "season_code")
     })
-    private Season season;
+    private SeasonEntity seasonEntity;
 
     @Column(name = "home_code")
     private String homeCode;

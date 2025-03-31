@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
@@ -17,7 +16,7 @@ import java.sql.Date;
 })
 @Getter
 @Setter
-public class Season {
+public class SeasonEntity {
     @EmbeddedId
     private SeasonPk pk;
     @Column

@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "game_schedule")
 @NoArgsConstructor
-public class GameSchedule {
+public class GameScheduleEntity {
     @Id
     @Column
     private int gameNo;
@@ -21,7 +21,7 @@ public class GameSchedule {
             @JoinColumn(name = "season_code", referencedColumnName = "season_code"),
             @JoinColumn(name = "game_round", referencedColumnName = "game_round")
     })
-    private Season season;
+    private SeasonEntity seasonEntity;
 
     @Column
     private String homeCode;

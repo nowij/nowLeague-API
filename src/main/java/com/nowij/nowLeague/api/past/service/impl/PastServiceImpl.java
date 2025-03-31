@@ -1,6 +1,6 @@
 package com.nowij.nowLeague.api.past.service.impl;
 
-import com.nowij.nowLeague.api.common.model.RoundRank;
+import com.nowij.nowLeague.api.common.model.RoundRankDTO;
 import com.nowij.nowLeague.api.past.repository.PastRepository;
 import com.nowij.nowLeague.api.past.service.PastService;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class PastServiceImpl implements PastService {
 
 
     @Override
-    public List<RoundRank> selectPastWinpointByRound(Map<String, Object> requestParams) {
+    public List<RoundRankDTO> selectPastWinpointByRound(Map<String, Object> requestParams) {
         return pastRepository.selectPastWinpointByRound(requestParams);
     }
 }
