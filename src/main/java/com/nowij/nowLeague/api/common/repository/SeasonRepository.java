@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface SeasonRepository extends JpaRepository<SeasonEntity, String> {
-    @Query(value = "SELECT SEASON_CODE as seasonCode, SEASON_NAME as seasonName FROM season GROUP BY SEASON_CODE, SEASON_NAME", nativeQuery = true)
+    @Query(value = "SELECT SEASON_CODE as seasonCode, SEASON_NAME as seasonName FROM season GROUP BY SEASON_CODE, SEASON_NAME ORDER BY SEASON_CODE DESC", nativeQuery = true)
     List<Object[]> selectAllSeasons();
 }

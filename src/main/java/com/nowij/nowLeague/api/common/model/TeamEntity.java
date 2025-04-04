@@ -14,9 +14,9 @@ import lombok.Setter;
 public class TeamEntity {
     @Id
     @Column(name = "team_code")
-    private String teamCode;
+    private String code;
     @Column(name = "team_name")
-    private String teamName;
+    private String name;
     @Column(name = "use_yn")
     private String useYn;
 }

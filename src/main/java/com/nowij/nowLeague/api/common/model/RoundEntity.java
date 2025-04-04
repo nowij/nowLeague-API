@@ -16,7 +16,7 @@ public class RoundEntity {
     @Column
     private String code;
     @Column(name = "kor_name")
-    private String korName;
+    private String name;
     @Column(name = "use_yn")
     private String useYn;
 }

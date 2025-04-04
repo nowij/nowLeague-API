@@ -6,11 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SeasonDTO {
-    private String seasonCode;
-    private String seasonName;
+    private String code;
+    private String name;
 
-    public SeasonDTO(String seasonCode, String seasonName) {
-        this.seasonCode = seasonCode;
-        this.seasonName = seasonName;
+    public SeasonDTO(String code, String name) {
+        this.code = code;
+        this.name = name;
     }
 }
