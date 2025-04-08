@@ -3,18 +3,45 @@
 
 <mapper namespace="com.nowij.nowLeague.api.common.repository.GameScheduleRepository">
     <select id="selectGameSchedule" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
-        SELECT GAME_NO,
-               AWAY_CODE,
-               AWAY_SPOINT,
-               GAME_DATE,
-               HOME_CODE,
-               HOME_SPOINT,
-               GAME_ROUND,
-               SEASON_CODE
-        FROM game_schedule
+        SELECT A.GAME_NO,
+               A.GAME_DATE,
+               A.SEASON_CODE,
+               A.GAME_ROUND,
+               A.HOME_CODE,
+               HOME_TEAM.TEAM_NAME AS HOME_NAME,
+               A.HOME_SPOINT,
+               A.AWAY_CODE,
+               AWAY_TEAM.TEAM_NAME AS AWAY_NAME,
+               A.AWAY_SPOINT
+        FROM game_schedule A
+        -- 홈팀 조인
+        LEFT JOIN team HOME_TEAM ON A.home_code = HOME_TEAM.team_code
+        -- 어웨이팀 조인
+        LEFT JOIN team AWAY_TEAM ON A.away_code = AWAY_TEAM.team_code
         WHERE SEASON_CODE = #{seasonCode}
         <if test='gameRound != null and gameRound != ""'>
           AND GAME_ROUND = #{gameRound}
         </if>
+    </select>
+
+    <select id="selectSpecificGame" parameterType="String" resultType="com.nowij.nowLeague.api.common.dto.ScheduleDTO">
+        SELECT A.GAME_NO,
+               A.GAME_DATE,
+               A.SEASON_CODE,
+               A.GAME_ROUND,
+               A.HOME_CODE,
+               HOME_TEAM.TEAM_NAME AS HOME_NAME,
+               A.HOME_SPOINT,
+               A.AWAY_CODE,
+               AWAY_TEAM.TEAM_NAME AS AWAY_NAME,
+               A.AWAY_SPOINT
+        FROM game_schedule A
+        -- 홈팀 조인
+        LEFT JOIN team HOME_TEAM ON A.home_code = HOME_TEAM.team_code
+        -- 어웨이팀 조인
+        LEFT JOIN team AWAY_TEAM ON A.away_code = AWAY_TEAM.team_code
+        WHERE A.GAME_DATE <![CDATA[>=]]> str_to_date(#{date},'%Y%m%d')
+          AND A.GAME_DATE <![CDATA[<=]]> str_to_date(#{date},'%Y%m%d')
+        ORDER BY A.GAME_DATE
     </select>
 </mapper>

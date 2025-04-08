@@ -1,5 +1,6 @@
 package com.nowij.nowLeague.api.common.service.impl;
 
+import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
 import com.nowij.nowLeague.api.common.model.GameResultEntity;
 import com.nowij.nowLeague.api.common.model.GameScheduleEntity;
 import com.nowij.nowLeague.api.common.repository.GameRepository;
@@ -26,11 +27,16 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public List<GameScheduleEntity> selectGameSchedule(String seasonCode, String gameRound) {
+    public List<ScheduleDTO> selectGameSchedule(String seasonCode, String gameRound) {
         Map<String, Object> requestParams = new HashMap<>();
         requestParams.put("seasonCode", seasonCode);
         requestParams.put("gameRound", gameRound);
         return gameScheduleRepository.selectGameSchedule(requestParams);
+    }
+
+    @Override
+    public ScheduleDTO selectSpecificGame(String date) {
+        return gameScheduleRepository.selectSpecificGame(date);
     }
 
     @Override

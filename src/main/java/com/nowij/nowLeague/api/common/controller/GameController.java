@@ -1,5 +1,6 @@
 package com.nowij.nowLeague.api.common.controller;
 
+import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
 import com.nowij.nowLeague.api.common.model.GameResultEntity;
 import com.nowij.nowLeague.api.common.model.GameScheduleEntity;
 import com.nowij.nowLeague.api.common.service.GameService;
@@ -22,8 +23,13 @@ public class GameController {
     }
 
     @GetMapping("/schedule")
-    public List<GameScheduleEntity> selectGameSchedule(@RequestParam String season, @RequestParam String round) {
+    public List<ScheduleDTO> selectGameSchedule(@RequestParam String season, @RequestParam String round) {
         return gameService.selectGameSchedule(season, round);
+    }
+
+    @GetMapping("/schedule/date")
+    public ScheduleDTO selectSpecificGame(@RequestParam String date) {
+        return gameService.selectSpecificGame(date);
     }
 
     @GetMapping("/result")
