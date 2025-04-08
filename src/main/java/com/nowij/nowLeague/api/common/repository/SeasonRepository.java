@@ -1,6 +1,5 @@
 package com.nowij.nowLeague.api.common.repository;
 
-import com.nowij.nowLeague.api.common.model.SeasonDTO;
 import com.nowij.nowLeague.api.common.model.SeasonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
