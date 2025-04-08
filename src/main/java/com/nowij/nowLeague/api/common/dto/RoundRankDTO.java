@@ -1,4 +1,4 @@
-package com.nowij.nowLeague.api.common.model;
+package com.nowij.nowLeague.api.common.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.nowij.nowLeague.api.common.service.impl;
 
 import com.nowij.nowLeague.api.common.model.RoundEntity;
-import com.nowij.nowLeague.api.common.model.SeasonDTO;
+import com.nowij.nowLeague.api.common.dto.SeasonDTO;
 import com.nowij.nowLeague.api.common.model.TeamEntity;
 import com.nowij.nowLeague.api.common.repository.RoundRepository;
 import com.nowij.nowLeague.api.common.repository.SeasonRepository;
@@ -39,6 +39,6 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public List<TeamEntity> selectAllTeams() {
-        return teamRepository.findAll();
+        return teamRepository.findTeamsByUseYnOrderByCode("Y");
     }
 }

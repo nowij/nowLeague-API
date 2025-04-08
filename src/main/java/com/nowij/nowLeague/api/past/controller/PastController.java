@@ -1,6 +1,6 @@
 package com.nowij.nowLeague.api.past.controller;
 
-import com.nowij.nowLeague.api.common.model.RoundRankDTO;
+import com.nowij.nowLeague.api.common.dto.RoundRankDTO;
 import com.nowij.nowLeague.api.past.service.PastService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

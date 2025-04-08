@@ -1,6 +1,6 @@
 package com.nowij.nowLeague.api.past.repository;
 
-import com.nowij.nowLeague.api.common.model.RoundRankDTO;
+import com.nowij.nowLeague.api.common.dto.RoundRankDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

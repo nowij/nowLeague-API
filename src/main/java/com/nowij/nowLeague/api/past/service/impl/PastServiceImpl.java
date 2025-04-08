@@ -1,6 +1,6 @@
 package com.nowij.nowLeague.api.past.service.impl;
 
-import com.nowij.nowLeague.api.common.model.RoundRankDTO;
+import com.nowij.nowLeague.api.common.dto.RoundRankDTO;
 import com.nowij.nowLeague.api.past.repository.PastRepository;
 import com.nowij.nowLeague.api.past.service.PastService;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
 package com.nowij.nowLeague.api.common.controller;
 
+import com.nowij.nowLeague.api.common.dto.SeasonDTO;
 import com.nowij.nowLeague.api.common.model.*;
 import com.nowij.nowLeague.api.common.service.CommonService;
 import org.springframework.web.bind.annotation.GetMapping;
