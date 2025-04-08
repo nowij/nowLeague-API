@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TeamRepository extends JpaRepository<TeamEntity, String> {
-    List<TeamEntity> findAll();
+    List<TeamEntity> findTeamsByUseYnOrderByCode(String useYn);
 }
