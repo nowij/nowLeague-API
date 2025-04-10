@@ -1,9 +1,8 @@
-package com.nowij.nowLeague.api.common.model;
+package com.nowij.nowLeague.api.gameSchedule.model;
 
+import com.nowij.nowLeague.api.common.model.SeasonEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Date;
 

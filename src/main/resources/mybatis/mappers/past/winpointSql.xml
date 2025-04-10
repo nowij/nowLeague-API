@@ -3,13 +3,15 @@
 
 <mapper namespace="com.nowij.nowLeague.api.past.repository.PastRepository">
     <select id="selectPastWinpointByRound" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
-        SELECT A.*, B.TEAM_NAME
+        SELECT RANK() OVER(ORDER BY WINPOINT DESC) AS RANKING, A.SEASON_CODE, A.TEAM_CODE, B.TEAM_NAME , A.WINPOINT
         FROM (
-                 SELECT RANK() OVER(ORDER BY WIN_POINT DESC) AS RANKING, TEAM_CODE, WIN_POINT
+                 SELECT SEASON_CODE, TEAM_CODE, SUM(WIN_POINT) AS WINPOINT
                  FROM team_score
                  WHERE SEASON_CODE = #{seasonCode}
+                <if test='gameRound != null and gameRound != ""'>
                    AND GAME_ROUND = #{gameRound}
-             ) A, team B
-        WHERE A.TEAM_CODE = B.TEAM_CODE
+                </if>
+             ) A
+        LEFT JOIN team B ON A.TEAM_CODE = B.TEAM_CODE
     </select>
 </mapper>

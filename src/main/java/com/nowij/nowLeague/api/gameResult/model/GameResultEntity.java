@@ -1,5 +1,6 @@
-package com.nowij.nowLeague.api.common.model;
+package com.nowij.nowLeague.api.gameResult.model;
 
+import com.nowij.nowLeague.api.common.model.SeasonEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

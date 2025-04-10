@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.nowij.nowLeague.api.common.repository.GameScheduleRepository">
+<mapper namespace="com.nowij.nowLeague.api.gameSchedule.repository.GameScheduleRepository">
     <select id="selectGameSchedule" parameterType="java.util.Map" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
         SELECT A.GAME_NO,
                A.GAME_DATE,

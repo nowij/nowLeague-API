@@ -1,7 +1,6 @@
-package com.nowij.nowLeague.api.common.repository;
+package com.nowij.nowLeague.api.gameSchedule.repository;
 
 import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
-import com.nowij.nowLeague.api.common.model.GameScheduleEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
