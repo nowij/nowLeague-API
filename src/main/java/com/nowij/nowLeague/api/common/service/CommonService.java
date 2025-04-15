@@ -9,4 +9,5 @@ public interface CommonService {
     List<SeasonDTO> selectAllSeasons();
     List<RoundEntity> selectAllRounds();
     List<TeamEntity> selectAllTeams();
+    String selectTodaySeason(String month);
 }

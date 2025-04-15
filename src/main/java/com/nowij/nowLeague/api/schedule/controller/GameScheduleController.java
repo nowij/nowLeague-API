@@ -1,7 +1,7 @@
-package com.nowij.nowLeague.api.gameSchedule.controller;
+package com.nowij.nowLeague.api.schedule.controller;
 
 import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
-import com.nowij.nowLeague.api.gameSchedule.service.GameScheduleService;
+import com.nowij.nowLeague.api.schedule.service.GameScheduleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

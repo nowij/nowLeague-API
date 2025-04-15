@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nowij.nowLeague.api.result.repository.GameRankRepository">
+    <select id="selectGameRanking" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+        SELECT RANK() OVER(ORDER BY WINPOINT DESC) AS RANKING, A.SEASON_CODE, A.TEAM_CODE, B.TEAM_NAME , A.WINPOINT
+        FROM (
+            SELECT SEASON_CODE, TEAM_CODE, SUM(WIN_POINT) AS WINPOINT
+            FROM team_score
+            WHERE SEASON_CODE = #{seasonCode}
+            <if test='gameRound != null and gameRound != ""'>
+                AND GAME_ROUND = #{gameRound}
+            </if>
+            GROUP BY TEAM_CODE, SEASON_CODE
+        ) A
+        LEFT JOIN team B ON A.TEAM_CODE = B.TEAM_CODE
+    </select>
+</mapper>

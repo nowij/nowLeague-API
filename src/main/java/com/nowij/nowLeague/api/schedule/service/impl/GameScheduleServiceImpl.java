@@ -1,8 +1,8 @@
-package com.nowij.nowLeague.api.gameSchedule.service.impl;
+package com.nowij.nowLeague.api.schedule.service.impl;
 
 import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
-import com.nowij.nowLeague.api.gameSchedule.repository.GameScheduleRepository;
-import com.nowij.nowLeague.api.gameSchedule.service.GameScheduleService;
+import com.nowij.nowLeague.api.schedule.repository.GameScheduleRepository;
+import com.nowij.nowLeague.api.schedule.service.GameScheduleService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

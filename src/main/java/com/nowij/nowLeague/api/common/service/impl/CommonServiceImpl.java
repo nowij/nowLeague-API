@@ -41,4 +41,9 @@ public class CommonServiceImpl implements CommonService {
     public List<TeamEntity> selectAllTeams() {
         return teamRepository.findTeamsByUseYnOrderByCode("Y");
     }
+
+    @Override
+    public String selectTodaySeason(String month) {
+        return seasonRepository.selectTodaySeason(month);
+    }
 }

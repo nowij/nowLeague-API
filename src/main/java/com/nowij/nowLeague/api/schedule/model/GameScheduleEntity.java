@@ -1,4 +1,4 @@
-package com.nowij.nowLeague.api.gameSchedule.model;
+package com.nowij.nowLeague.api.schedule.model;
 
 import com.nowij.nowLeague.api.common.model.SeasonEntity;
 import jakarta.persistence.*;

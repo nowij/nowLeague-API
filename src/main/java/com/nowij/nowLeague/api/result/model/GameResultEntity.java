@@ -1,4 +1,4 @@
-package com.nowij.nowLeague.api.gameResult.model;
+package com.nowij.nowLeague.api.result.model;
 
 import com.nowij.nowLeague.api.common.model.SeasonEntity;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.nowij.nowLeague.api.gameSchedule.service;
+package com.nowij.nowLeague.api.schedule.service;
 
 import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
 

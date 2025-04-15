@@ -24,4 +24,9 @@ public class GameResultController {
     public ResponseEntity<GameResultEntity> selectGameResult(@RequestParam int no) {
         return gameResultService.selectGameResult(no);
     }
+
+    @GetMapping("/rank")
+    public ResponseEntity<List<GameRankingDTO>> selectRanking(@RequestParam String season) {
+        return gameResultService.selectGameRanking(season);
+    }
 }
