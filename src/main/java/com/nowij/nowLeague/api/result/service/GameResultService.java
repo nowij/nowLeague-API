@@ -5,7 +5,6 @@ import com.nowij.nowLeague.api.result.model.GameResultEntity;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Map;
 
 public interface GameResultService {
     ResponseEntity<GameResultEntity> selectGameResult(int gameNo);

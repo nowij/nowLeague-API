@@ -2,10 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.nowij.nowLeague.api.result.repository.GameRankRepository">
-    <select id="selectGameRanking" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
-        SELECT RANK() OVER(ORDER BY WINPOINT DESC) AS RANKING, A.SEASON_CODE, A.TEAM_CODE, B.TEAM_NAME , A.WINPOINT
+    <select id="selectGameRanking" parameterType="java.util.Map" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
+        SELECT RANK() OVER(ORDER BY WIN_POINT DESC) AS RANKING,
+            A.SEASON_CODE,
+            A.TEAM_CODE,
+            B.TEAM_NAME ,
+            A.WIN_POINT,
+            A.GAME_COUNT,
+            A.WIN_COUNT,
+            A.LOSE_COUNT
         FROM (
-            SELECT SEASON_CODE, TEAM_CODE, SUM(WIN_POINT) AS WINPOINT
+            SELECT SEASON_CODE,
+                   TEAM_CODE,
+                   SUM(WIN_POINT) AS WIN_POINT,
+                   SUM(GAME_COUNT) AS GAME_COUNT,
+                   SUM(WIN_COUNT) AS WIN_COUNT,
+                   SUM(LOSE_COUNT) AS LOSE_COUNT
             FROM team_score
             WHERE SEASON_CODE = #{seasonCode}
             <if test='gameRound != null and gameRound != ""'>
