@@ -1,7 +1,9 @@
 package com.nowij.nowLeague.api.result.controller;
 
+import com.nowij.nowLeague.api.common.dto.ScheduleDTO;
 import com.nowij.nowLeague.api.result.model.GameRankingDTO;
 import com.nowij.nowLeague.api.result.model.GameResultEntity;
+import com.nowij.nowLeague.api.result.model.ReqResultParams;
 import com.nowij.nowLeague.api.result.service.GameResultService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +28,12 @@ public class GameResultController {
     }
 
     @GetMapping("/rank")
-    public ResponseEntity<List<GameRankingDTO>> selectRanking(@RequestParam String season) {
-        return gameResultService.selectGameRanking(season);
+    public ResponseEntity<List<GameRankingDTO>> selectRanking(ReqResultParams params) {
+        return gameResultService.selectGameRanking(params);
+    }
+
+    @GetMapping("/result/team")
+    public ResponseEntity<List<ScheduleDTO>> selectRecentResultByTeam(ReqResultParams params) {
+        return gameResultService.selectRecentResultByTeam(params);
     }
 }

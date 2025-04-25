@@ -19,12 +19,36 @@
                    SUM(WIN_COUNT) AS WIN_COUNT,
                    SUM(LOSE_COUNT) AS LOSE_COUNT
             FROM team_score
-            WHERE SEASON_CODE = #{seasonCode}
-            <if test='gameRound != null and gameRound != ""'>
-                AND GAME_ROUND = #{gameRound}
+            WHERE SEASON_CODE = #{season}
+            <if test='round != null and round != ""'>
+                AND GAME_ROUND = #{round}
             </if>
             GROUP BY TEAM_CODE, SEASON_CODE
         ) A
         LEFT JOIN team B ON A.TEAM_CODE = B.TEAM_CODE
+    </select>
+
+    <select id="selectRecentResultByTeam" parameterType="com.nowij.nowLeague.api.result.model.ReqResultParams" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
+        SELECT
+            A.GAME_NO,
+            A.GAME_DATE,
+            A.GAME_ROUND,
+            A.SEASON_CODE,
+            A.HOME_CODE,
+            B.TEAM_NAME AS HOME_NAME,
+            A.HOME_SPOINT,
+            A.AWAY_CODE,
+            C.TEAM_NAME AS AWAY_NAME,
+            A.AWAY_SPOINT
+        FROM game_schedule A LEFT JOIN team B ON A.HOME_CODE = B.TEAM_CODE
+        LEFT JOIN team C ON A.AWAY_CODE = C.TEAM_CODE
+        WHERE A.HOME_SPOINT IS NOT NULL
+ <!--       <if test='round != null and round != ""'>
+            AND A.GAME_ROUND = #{round}
+        </if>
+            AND A.SEASON_CODE = #{season}-->
+            AND (A.HOME_CODE = #{team} OR A.AWAY_CODE = #{team})
+        ORDER BY A.GAME_NO DESC
+        LIMIT 0, 5
     </select>
 </mapper>

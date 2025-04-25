@@ -54,27 +54,4 @@
           AND A.GAME_DATE <![CDATA[<=]]> str_to_date(#{date},'%Y%m%d')
         ORDER BY A.GAME_DATE
     </select>
-
-    <select id="selectTeamGrade">
-        SELECT
-            A.GAME_NO,
-            A.GAME_DATE,
-            A.GAME_ROUND,
-            A.SEASON_CODE,
-            A.HOME_CODE,
-            B.TEAM_NAME,
-            A.AWAY_CODE,
-            C.TEAM_NAME,
-            A.HOME_SPOINT,
-            A.AWAY_SPOINT
-        FROM game_schedule A LEFT JOIN team B ON A.HOME_CODE = B.TEAM_CODE
-                             LEFT JOIN team C ON A.AWAY_CODE = C.TEAM_CODE
-        WHERE A.HOME_SPOINT IS NOT NULL
-        <if test='gameRound != null and gameRound != ""'>
-          AND A.GAME_ROUND = #{gameRound}
-        </if>
-          AND A.SEASON_CODE = #{seasonCode}
-          AND (A.HOME_CODE = #{teamCode} OR A.AWAY_CODE = #{teamCode})
-        ORDER BY A.GAME_NO DESC
-    </select>
 </mapper>
