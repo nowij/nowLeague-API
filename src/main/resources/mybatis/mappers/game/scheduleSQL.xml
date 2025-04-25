@@ -2,7 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.nowij.nowLeague.api.schedule.repository.GameScheduleRepository">
-    <select id="selectGameSchedule" parameterType="java.util.Map" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
+    <select id="selectGameScheduleCount" parameterType="com.nowij.nowLeague.api.schedule.model.ReqScheduleParams" resultType="int">
+        SELECT COUNT(1)
+        FROM game_schedule
+        WHERE SEASON_CODE = #{season}
+        <if test='round != null and round != ""'>
+            AND GAME_ROUND = #{round}
+        </if>
+    </select>
+
+    <select id="selectGameSchedule" parameterType="com.nowij.nowLeague.api.common.dto.RequestPageDTO" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
         SELECT A.GAME_NO,
                A.GAME_DATE,
                A.SEASON_CODE,
@@ -18,10 +27,11 @@
         LEFT JOIN team HOME_TEAM ON A.home_code = HOME_TEAM.team_code
         -- 어웨이팀 조인
         LEFT JOIN team AWAY_TEAM ON A.away_code = AWAY_TEAM.team_code
-        WHERE SEASON_CODE = #{seasonCode}
-        <if test='gameRound != null and gameRound != ""'>
-          AND GAME_ROUND = #{gameRound}
+        WHERE SEASON_CODE = #{requestParams.season}
+        <if test='requestParams.round != null and requestParams.round != ""'>
+          AND GAME_ROUND = #{requestParams.round}
         </if>
+        LIMIT #{pageable.offset}, #{pageable.pageSize}
     </select>
 
     <select id="selectSpecificGame" parameterType="String" resultType="com.nowij.nowLeague.api.common.dto.ScheduleDTO">
@@ -43,5 +53,28 @@
         WHERE A.GAME_DATE <![CDATA[>=]]> str_to_date(#{date},'%Y%m%d')
           AND A.GAME_DATE <![CDATA[<=]]> str_to_date(#{date},'%Y%m%d')
         ORDER BY A.GAME_DATE
+    </select>
+
+    <select id="selectTeamGrade">
+        SELECT
+            A.GAME_NO,
+            A.GAME_DATE,
+            A.GAME_ROUND,
+            A.SEASON_CODE,
+            A.HOME_CODE,
+            B.TEAM_NAME,
+            A.AWAY_CODE,
+            C.TEAM_NAME,
+            A.HOME_SPOINT,
+            A.AWAY_SPOINT
+        FROM game_schedule A LEFT JOIN team B ON A.HOME_CODE = B.TEAM_CODE
+                             LEFT JOIN team C ON A.AWAY_CODE = C.TEAM_CODE
+        WHERE A.HOME_SPOINT IS NOT NULL
+        <if test='gameRound != null and gameRound != ""'>
+          AND A.GAME_ROUND = #{gameRound}
+        </if>
+          AND A.SEASON_CODE = #{seasonCode}
+          AND (A.HOME_CODE = #{teamCode} OR A.AWAY_CODE = #{teamCode})
+        ORDER BY A.GAME_NO DESC
     </select>
 </mapper>
