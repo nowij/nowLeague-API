@@ -32,6 +32,11 @@ public class GameResultController {
         return gameResultService.selectGameRanking(params);
     }
 
+    @GetMapping("/rank/graph")
+    public ResponseEntity<List<GameRankingDTO>> selectRankingGraph(ReqResultParams params) {
+        return gameResultService.selectGameRankingGraph(params);
+    }
+
     @GetMapping("/result/team")
     public ResponseEntity<List<ScheduleDTO>> selectRecentResultByTeam(ReqResultParams params) {
         return gameResultService.selectRecentResultByTeam(params);

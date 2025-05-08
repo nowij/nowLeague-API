@@ -40,7 +40,13 @@ public class GameResultServiceImpl implements GameResultService {
     }
 
     @Override
+    public ResponseEntity<List<GameRankingDTO>> selectGameRankingGraph(ReqResultParams params) {
+        return new ResponseEntity<>(gameRankRepository.selectGameRankingGraph(params.getSeason()), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<List<ScheduleDTO>> selectRecentResultByTeam(ReqResultParams params) {
+
         return new ResponseEntity<>(gameRankRepository.selectRecentResultByTeam(params), HttpStatus.OK);
     }
 }

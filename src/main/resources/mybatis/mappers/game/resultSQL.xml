@@ -28,6 +28,26 @@
         LEFT JOIN team B ON A.TEAM_CODE = B.TEAM_CODE
     </select>
 
+    <select id="selectGameRankingGraph" parameterType="String" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
+        SELECT
+            RANK() OVER(PARTITION BY GAME_ROUND order by WIN_POINT DESC) AS RANKING,
+            GAME_ROUND,
+            B.TEAM_NAME,
+            B.TEAM_COLOR,
+            WIN_POINT
+        FROM (
+            SELECT
+                GAME_ROUND,
+                TEAM_CODE,
+                WIN_POINT
+            FROM team_score
+            WHERE SEASON_CODE = #{season}
+            GROUP BY TEAM_CODE, SEASON_CODE, GAME_ROUND
+            order by GAME_ROUND
+        ) A
+        LEFT JOIN team B ON A.TEAM_CODE = B.TEAM_CODE
+    </select>
+
     <select id="selectRecentResultByTeam" parameterType="com.nowij.nowLeague.api.result.model.ReqResultParams" resultType="com.nowij.nowLeague.api.common.configuration.CamelHashMapConfig">
         SELECT
             A.GAME_NO,

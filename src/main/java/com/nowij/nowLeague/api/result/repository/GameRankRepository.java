@@ -11,4 +11,5 @@ import java.util.List;
 public interface GameRankRepository {
     List<GameRankingDTO> selectGameRanking(ReqResultParams params);
     List<ScheduleDTO> selectRecentResultByTeam(ReqResultParams params);
+    List<GameRankingDTO> selectGameRankingGraph(String season);
 }

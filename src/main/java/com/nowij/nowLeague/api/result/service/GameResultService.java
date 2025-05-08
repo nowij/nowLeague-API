@@ -11,5 +11,6 @@ import java.util.List;
 public interface GameResultService {
     ResponseEntity<GameResultEntity> selectGameResult(int gameNo);
     ResponseEntity<List<GameRankingDTO>> selectGameRanking(ReqResultParams params);
+    ResponseEntity<List<GameRankingDTO>> selectGameRankingGraph(ReqResultParams params);
     ResponseEntity<List<ScheduleDTO>> selectRecentResultByTeam(ReqResultParams params);
 }
